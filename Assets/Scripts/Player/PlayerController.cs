@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TheDarkHunt.Player
+namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -11,10 +8,9 @@ namespace TheDarkHunt.Player
 
         private float _inputX;
         private float _inputZ;
-
-        public float InputX => _inputX;
-        public float InputZ => _inputZ;
         
+        public Vector3 InputVector => new Vector3(_inputX, 0f, _inputZ);
+
         private void Awake()
         {
             _fixedJoystick = FindObjectOfType<FixedJoystick>();
@@ -22,10 +18,10 @@ namespace TheDarkHunt.Player
 
         private void Update()
         {
-            GrabInput();
+            GrabJoystickInput();
         }
 
-        private void GrabInput()
+        private void GrabJoystickInput()
         {
             _inputX = _fixedJoystick.Horizontal;
             _inputZ = _fixedJoystick.Vertical;
