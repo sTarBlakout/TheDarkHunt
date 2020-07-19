@@ -26565,7 +26565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca54212445005984f839037d12ca6e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedCoef: 8
+  maxMoveSpeed: 8
   rotateSpeedCoef: 500
   slowDownCoef: 0.98
 --- !u!1 &4897061445919683342

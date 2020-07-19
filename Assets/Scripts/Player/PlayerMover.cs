@@ -4,23 +4,32 @@ namespace Player
 {
     public class PlayerMover : MonoBehaviour
     {
-        [SerializeField] private float moveSpeedCoef = 1f;
+        [SerializeField] private float maxMoveSpeed = 1f;
+        [SerializeField] private float timeZeroToMax = 1f;
+        [SerializeField] private float timeMaxToZero = 1f;
         [SerializeField] private float rotateSpeedCoef = 1f;
-        [SerializeField] private float slowDownCoef;
-        
+
         private CharacterController _characterController;
         private PlayerController _playerController;
 
         private Vector3 _movement;
         private Quaternion _rotation;
-
-        public Vector3 Movement => _movement;
-        public float MaxMoveSpeed => moveSpeedCoef;
+        private float _acceleration;
+        private float _deceleration;
+        private float _currSpeed;
+        
+        public float FrwdSpdNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerController = GetComponent<PlayerController>();
+        }
+
+        private void Start()
+        {
+            _acceleration = maxMoveSpeed / timeZeroToMax;
+            _deceleration = - maxMoveSpeed / timeMaxToZero;
         }
 
         private void Update()
@@ -32,9 +41,17 @@ namespace Player
         private void UpdateMovement()
         {
             if (_playerController.InputVector == Vector3.zero)
-                _movement *= slowDownCoef;
+            {
+                _currSpeed += _deceleration * Time.deltaTime;
+                _currSpeed = Mathf.Max(_currSpeed, 0f);
+                _movement = transform.forward * _currSpeed;
+            }
             else
-                _movement = _playerController.InputVector * moveSpeedCoef;
+            {
+                _currSpeed += _acceleration * Time.deltaTime;
+                _currSpeed = Mathf.Min(_currSpeed, maxMoveSpeed);
+                _movement = _playerController.InputVector * _currSpeed;
+            }
 
             _characterController.Move(_movement * Time.deltaTime);
         }

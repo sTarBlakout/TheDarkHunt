@@ -18,16 +18,9 @@ namespace Player
 
         private void Update()
         {
-            ProcessMovingParams();
+            _animator.SetFloat(MoveSpeed, _playerMover.FrwdSpdNorm);
         }
 
-        private void ProcessMovingParams()
-        {
-            var localVelocity = transform.InverseTransformDirection(_playerMover.Movement);
-            var speed = localVelocity.z / _playerMover.MaxMoveSpeed;
-            _animator.SetFloat(MoveSpeed, speed);
-        }
-        
         #region Animation Events
 
         private void FootR()
