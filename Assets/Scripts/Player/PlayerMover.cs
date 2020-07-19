@@ -6,6 +6,7 @@ namespace Player
     {
         [SerializeField] private float moveSpeedCoef = 1f;
         [SerializeField] private float rotateSpeedCoef = 1f;
+        [SerializeField] private float slowDownCoef;
         
         private CharacterController _characterController;
         private PlayerController _playerController;
@@ -14,6 +15,7 @@ namespace Player
         private Quaternion _rotation;
 
         public Vector3 Movement => _movement;
+        public float MaxMoveSpeed => moveSpeedCoef;
 
         private void Awake()
         {
@@ -29,7 +31,11 @@ namespace Player
         
         private void UpdateMovement()
         {
-            _movement = _playerController.InputVector * moveSpeedCoef;
+            if (_playerController.InputVector == Vector3.zero)
+                _movement *= slowDownCoef;
+            else
+                _movement = _playerController.InputVector * moveSpeedCoef;
+
             _characterController.Move(_movement * Time.deltaTime);
         }
         

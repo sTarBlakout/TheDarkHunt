@@ -7,12 +7,13 @@ namespace Player
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         
         private Animator _animator;
-        private PlayerController _playerController;
+        private PlayerMover _playerMover;
+        
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            _playerController = GetComponent<PlayerController>();
+            _playerMover = GetComponent<PlayerMover>();
         }
 
         private void Update()
@@ -22,8 +23,8 @@ namespace Player
 
         private void ProcessMovingParams()
         {
-            var localVelocity = transform.InverseTransformDirection(_playerController.InputVector);
-            var speed = localVelocity.z;
+            var localVelocity = transform.InverseTransformDirection(_playerMover.Movement);
+            var speed = localVelocity.z / _playerMover.MaxMoveSpeed;
             _animator.SetFloat(MoveSpeed, speed);
         }
         
