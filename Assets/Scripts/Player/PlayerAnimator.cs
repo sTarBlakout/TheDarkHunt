@@ -18,7 +18,7 @@ namespace Player
 
         private void Update()
         {
-            _animator.SetFloat(MoveSpeed, _playerMover.FrwdSpdNorm);
+            _animator.SetFloat(MoveSpeed, _playerMover.MagnitudeNorm);
         }
 
         #region Animation Events

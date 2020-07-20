@@ -26566,8 +26566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: 8
-  rotateSpeedCoef: 500
-  slowDownCoef: 0.98
+  timeZeroToMax: 1
+  timeMaxToZero: 1
+  rotateSpeed: 500
 --- !u!1 &4897061445919683342
 GameObject:
   m_ObjectHideFlags: 0

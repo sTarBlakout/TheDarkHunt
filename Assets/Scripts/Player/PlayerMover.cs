@@ -7,7 +7,7 @@ namespace Player
         [SerializeField] private float maxMoveSpeed = 1f;
         [SerializeField] private float timeZeroToMax = 1f;
         [SerializeField] private float timeMaxToZero = 1f;
-        [SerializeField] private float rotateSpeedCoef = 1f;
+        [SerializeField] private float rotateSpeed = 1f;
 
         private CharacterController _characterController;
         private PlayerController _playerController;
@@ -18,7 +18,7 @@ namespace Player
         private float _deceleration;
         private float _currSpeed;
         
-        public float FrwdSpdNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
+        public float MagnitudeNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
 
         private void Awake()
         {
@@ -61,7 +61,8 @@ namespace Player
             if (_movement == Vector3.zero) return;
             
             var rotateTo = Quaternion.LookRotation(_movement);
-            _rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, rotateSpeedCoef * Time.deltaTime);
+            var step = rotateSpeed * Time.deltaTime;
+            _rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, step);
             transform.rotation = _rotation;
         }
     }
