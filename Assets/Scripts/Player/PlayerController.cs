@@ -10,6 +10,7 @@ namespace Player
         private float _inputZ;
         
         public Vector3 InputVector => new Vector3(_inputX, 0f, _inputZ);
+        public Vector3 LastUpVector => new Vector3(_fixedJoystick.LastUpInput.x, 0f, _fixedJoystick.LastUpInput.y);
 
         private void Awake()
         {
