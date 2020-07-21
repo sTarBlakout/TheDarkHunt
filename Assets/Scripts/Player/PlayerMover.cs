@@ -4,21 +4,32 @@ namespace Player
 {
     public class PlayerMover : MonoBehaviour
     {
-        [SerializeField] private float moveSpeedCoef = 1f;
-        [SerializeField] private float rotateSpeedCoef = 1f;
-        
+        [SerializeField] private float maxMoveSpeed = 1f;
+        [SerializeField] private float timeZeroToMax = 1f;
+        [SerializeField] private float timeMaxToZero = 1f;
+        [SerializeField] private float rotateSpeed = 1f;
+
         private CharacterController _characterController;
         private PlayerController _playerController;
 
         private Vector3 _movement;
         private Quaternion _rotation;
-
-        public Vector3 Movement => _movement;
+        private float _acceleration;
+        private float _deceleration;
+        private float _currSpeed;
+        
+        public float MagnitudeNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
 
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _playerController = GetComponent<PlayerController>();
+        }
+
+        private void Start()
+        {
+            _acceleration = maxMoveSpeed / timeZeroToMax;
+            _deceleration = - maxMoveSpeed / timeMaxToZero;
         }
 
         private void Update()
@@ -29,7 +40,19 @@ namespace Player
         
         private void UpdateMovement()
         {
-            _movement = _playerController.InputVector * moveSpeedCoef;
+            if (_playerController.InputVector == Vector3.zero)
+            {
+                _currSpeed += _deceleration * Time.deltaTime;
+                _currSpeed = Mathf.Max(_currSpeed, 0f);
+                _movement = transform.forward * _currSpeed;
+            }
+            else
+            {
+                _currSpeed += _acceleration * Time.deltaTime;
+                _currSpeed = Mathf.Min(_currSpeed, maxMoveSpeed);
+                _movement = _playerController.InputVector * _currSpeed;
+            }
+
             _characterController.Move(_movement * Time.deltaTime);
         }
         
@@ -38,7 +61,8 @@ namespace Player
             if (_movement == Vector3.zero) return;
             
             var rotateTo = Quaternion.LookRotation(_movement);
-            _rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, rotateSpeedCoef * Time.deltaTime);
+            var step = rotateSpeed * Time.deltaTime;
+            _rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, step);
             transform.rotation = _rotation;
         }
     }

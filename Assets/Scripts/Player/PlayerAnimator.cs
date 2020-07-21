@@ -7,26 +7,19 @@ namespace Player
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         
         private Animator _animator;
-        private PlayerController _playerController;
+        private PlayerMover _playerMover;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            _playerController = GetComponent<PlayerController>();
+            _playerMover = GetComponent<PlayerMover>();
         }
 
         private void Update()
         {
-            ProcessMovingParams();
+            _animator.SetFloat(MoveSpeed, _playerMover.MagnitudeNorm);
         }
 
-        private void ProcessMovingParams()
-        {
-            var localVelocity = transform.InverseTransformDirection(_playerController.InputVector);
-            var speed = localVelocity.z;
-            _animator.SetFloat(MoveSpeed, speed);
-        }
-        
         #region Animation Events
 
         private void FootR()
