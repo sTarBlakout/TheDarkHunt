@@ -8,7 +8,6 @@ namespace Player
         
         private Animator _animator;
         private PlayerMover _playerMover;
-        
 
         private void Awake()
         {
