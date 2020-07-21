@@ -44,7 +44,7 @@ namespace Player
             {
                 _currSpeed += _deceleration * Time.deltaTime;
                 _currSpeed = Mathf.Max(_currSpeed, 0f);
-                _movement = transform.forward * _currSpeed;
+                _movement = _playerController.LastUpVector * _currSpeed;
             }
             else
             {
