@@ -20,6 +20,12 @@ namespace Player
             _animator.SetFloat(MoveSpeed, _playerMover.MagnitudeNorm);
         }
 
+        public void SetNewAnimations(AnimatorOverrideController animations)
+        {
+            if (animations == null) return;
+            _animator.runtimeAnimatorController = animations;
+        }
+
         #region Animation Events
 
         private void FootR()

@@ -7,8 +7,10 @@ namespace Weapons
         [Header("Main")] 
         [SerializeField] private string weaponName;
         [SerializeField] private GameObject weaponPrefab;
+        [SerializeField] private AnimatorOverrideController animations;
 
         public string WeaponName => weaponName;
         public GameObject WeaponPrefab => weaponPrefab;
+        public AnimatorOverrideController Animations => animations;
     }
 }
