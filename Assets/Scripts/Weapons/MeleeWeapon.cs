@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Weapons.MeleeWeapons
+namespace Weapons
 {
-    public class MeleeWeaponBase : WeaponBase
+    public class MeleeWeapon : WeaponBase
     {
         [Header("Base Stats")]
         [SerializeField] private float damage;
         [SerializeField] private float attackSpeed;
-        
+
         public float Damage => damage;
         public float AttackSpeed => attackSpeed;
     }
