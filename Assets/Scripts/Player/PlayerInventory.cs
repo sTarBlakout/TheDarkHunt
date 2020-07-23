@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Weapons;
 
 namespace Player
@@ -9,14 +8,14 @@ namespace Player
         [Header("Body Parts Transform")]
         [SerializeField] private Transform rightHandTransform;
 
-        [Header("Equipment")]
+        [Header("Equipment")] 
         [SerializeField] private WeaponBase equippedWeapon;
 
-        private GameObject _equippedWeapon;
+        private GameObject _equippedWeaponObject;
 
         private PlayerAnimator _playerAnimator;
         
-        public GameObject EquippedWeapon => _equippedWeapon;
+        public WeaponBase EquippedWeapon => equippedWeapon;
 
         private void Awake()
         {
@@ -25,7 +24,7 @@ namespace Player
 
         private void Start()
         {
-            _equippedWeapon = EquipWeapon();
+            _equippedWeaponObject = EquipWeapon();
         }
 
         private GameObject EquipWeapon()

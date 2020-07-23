@@ -17,7 +17,7 @@ namespace Player
         private float _acceleration;
         private float _deceleration;
         private float _currSpeed;
-        
+
         public float MagnitudeNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
 
         private void Awake()
@@ -64,6 +64,11 @@ namespace Player
             var step = rotateSpeed * Time.deltaTime;
             _rotation = Quaternion.RotateTowards(transform.rotation, rotateTo, step);
             transform.rotation = _rotation;
+        }
+
+        public void Dash(Vector3 direction, float power)
+        {
+            //dashing
         }
     }
 }

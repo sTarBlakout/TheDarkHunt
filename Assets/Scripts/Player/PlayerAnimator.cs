@@ -5,6 +5,7 @@ namespace Player
     public class PlayerAnimator : MonoBehaviour
     {
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+        private static readonly int SimpleAttack = Animator.StringToHash("SimpleAttack");
         
         private Animator _animator;
         private PlayerMover _playerMover;
@@ -26,6 +27,11 @@ namespace Player
             _animator.runtimeAnimatorController = animations;
         }
 
+        public void ProcessSimpleAttack()
+        {
+            _animator.SetTrigger(SimpleAttack);
+        }
+
         #region Animation Events
 
         private void FootR()
@@ -34,6 +40,11 @@ namespace Player
         }
         
         private void FootL()
+        {
+            
+        }
+
+        private void Hit()
         {
             
         }
