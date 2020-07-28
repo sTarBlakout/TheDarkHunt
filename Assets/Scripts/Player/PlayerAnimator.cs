@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
+        [SerializeField] private AnimatorOverrideController initialController;
+    
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         private static readonly int SimpleAttack = Animator.StringToHash("SimpleAttack");
         
@@ -14,6 +17,11 @@ namespace Player
         {
             _animator = GetComponent<Animator>();
             _playerMover = GetComponent<PlayerMover>();
+        }
+
+        private void Start()
+        {
+            _animator.runtimeAnimatorController = initialController;
         }
 
         private void Update()
