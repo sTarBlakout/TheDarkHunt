@@ -49,8 +49,8 @@ namespace Player
             if (meleeWeapon != null) 
             {
                 _playerFighter.Attack();
+                _playerMover.SmoothDash(transform.forward, meleeWeapon.DashPower);
                 _playerAnimator.ProcessSimpleAttack();
-                _playerMover.Dash(transform.forward, meleeWeapon.DashPower);
             }
         }
     }

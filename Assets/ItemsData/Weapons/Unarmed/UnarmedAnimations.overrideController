@@ -8,4 +8,14 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: UnarmedAnimations
   m_Controller: {fileID: 9100000, guid: da6c9edde9b1d174e81b656662037f74, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d8da64fb7431b7f42975b515bf6e2714, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 393274f3704ac8a49adb190785ca48db, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 8023307ab003e024385aaf7333e10d42, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a7e98d51bd73b0348b47acf6a9f02766, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 0b070a2ba34d840478eb6e9f107e0e48, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 95dc4fbaa01379f4f908847fb44054d4, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 85385e3e7dba2f647ac0f81f6529310f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4209bae04bb8c8844bba85e9c69800c9, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: c0fa0d6cfe1583b4992a2ddd92379877, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a6e833647d522494f83e25a6e218364b, type: 3}

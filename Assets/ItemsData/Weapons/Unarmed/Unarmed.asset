@@ -17,4 +17,4 @@ MonoBehaviour:
   animations: {fileID: 22100000, guid: 9a38bba3f8127b640ac099685c3a2614, type: 2}
   damage: 10
   attackSpeed: 1
-  dashPower: 1000
+  dashPower: 5
