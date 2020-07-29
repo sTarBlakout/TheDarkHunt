@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using  UnityEngine.Animations;
 
 namespace Player
 {
@@ -10,17 +10,18 @@ namespace Player
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         private static readonly int SimpleAttack = Animator.StringToHash("SimpleAttack");
         
+        private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+        
         private Animator _animator;
         private PlayerMover _playerMover;
+
+        public bool IsInAttackState => _animator.GetBool(IsAttacking);
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _playerMover = GetComponent<PlayerMover>();
-        }
-
-        private void Start()
-        {
+            
             _animator.runtimeAnimatorController = initialController;
         }
 

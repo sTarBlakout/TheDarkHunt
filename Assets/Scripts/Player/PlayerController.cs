@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Weapons;
 
 namespace Player
@@ -42,6 +41,8 @@ namespace Player
 
         public void AttackBehavior()
         {
+            if (_playerAnimator.IsInAttackState) return;
+
             var currWeapon = _playerInventory.EquippedWeapon;
             if (currWeapon == null) return;
 
