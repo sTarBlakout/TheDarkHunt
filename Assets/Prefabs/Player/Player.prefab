@@ -48,7 +48,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 593151098560395709}
-        m_MethodName: AttackBehavior
+        m_MethodName: SimpleAttackBehavior
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -19,9 +19,8 @@ namespace Player
         private PlayerFighter _playerFighter;
         private PlayerMover _playerMover;
         private PlayerInventory _playerInventory;
-        
-        private MovingState _movingState;
-        public MovingState MovingState => _movingState;
+
+        public MovingState MovingState { get; private set; }
 
         private void Awake()
         {
@@ -41,7 +40,7 @@ namespace Player
 
         private void UpdateStates()
         {
-            _movingState = _playerAnimator.Animator.GetBool(GlobalAnimationData.IsAttacking) ? 
+            MovingState = _playerAnimator.Animator.GetBool(GlobalAnimationData.IsAttacking) ? 
                 MovingState.SmoothDash : MovingState.DefaultMove;
         }
 
@@ -51,7 +50,7 @@ namespace Player
             _inputZ = _fixedJoystick.Vertical;
         }
 
-        public void AttackBehavior()
+        public void SimpleAttackBehavior()
         {
             if (_playerAnimator.IsInAttackState) return;
 
