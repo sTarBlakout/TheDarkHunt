@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using Global;
+using UnityEngine;
 using Weapons;
+using Player.DataTypes;
 
 namespace Player
 {
@@ -17,6 +19,9 @@ namespace Player
         private PlayerFighter _playerFighter;
         private PlayerMover _playerMover;
         private PlayerInventory _playerInventory;
+        
+        private MovingState _movingState;
+        public MovingState MovingState => _movingState;
 
         private void Awake()
         {
@@ -31,6 +36,13 @@ namespace Player
         private void Update()
         {
             GrabJoystickInput();
+            UpdateStates();
+        }
+
+        private void UpdateStates()
+        {
+            _movingState = _playerAnimator.Animator.GetBool(GlobalAnimationData.IsAttacking) ? 
+                MovingState.SmoothDash : MovingState.DefaultMove;
         }
 
         private void GrabJoystickInput()

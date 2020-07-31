@@ -10,8 +10,6 @@ namespace Player
         [SerializeField] private float timeZeroToMax = 1f;
         [SerializeField] private float timeMaxToZero = 1f;
         [SerializeField] private float rotateSpeed = 1f;
-        
-        public MovingState movingState;
 
         private CharacterController _characterController;
         private PlayerController _playerController;
@@ -39,8 +37,6 @@ namespace Player
 
         private void Start()
         {
-            movingState = MovingState.DefaultMove;
-            
             _acceleration = maxMoveSpeed / timeZeroToMax;
             _deceleration = - maxMoveSpeed / timeMaxToZero;
             
@@ -55,7 +51,7 @@ namespace Player
         
         private void UpdateMovement()
         {
-            switch (movingState)
+            switch (_playerController.MovingState)
             {
                 case MovingState.DefaultMove:
                 {

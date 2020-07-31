@@ -1,21 +1,17 @@
 ﻿using UnityEngine;
-using  UnityEngine.Animations;
+using Global;
 
 namespace Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
         [SerializeField] private AnimatorOverrideController initialController;
-    
-        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
-        private static readonly int SimpleAttack = Animator.StringToHash("SimpleAttack");
-        
-        private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
-        
+
         private Animator _animator;
         private PlayerMover _playerMover;
 
-        public bool IsInAttackState => _animator.GetBool(IsAttacking);
+        public bool IsInAttackState => _animator.GetBool(GlobalAnimationData.IsAttacking);
+        public Animator Animator => _animator;
 
         private void Awake()
         {
@@ -27,7 +23,7 @@ namespace Player
 
         private void Update()
         {
-            _animator.SetFloat(MoveSpeed, _playerMover.MagnitudeNorm);
+            _animator.SetFloat(GlobalAnimationData.MoveSpeed, _playerMover.MagnitudeNorm);
         }
 
         public void SetNewAnimations(AnimatorOverrideController animations)
@@ -38,7 +34,7 @@ namespace Player
 
         public void ProcessSimpleAttack()
         {
-            _animator.SetTrigger(SimpleAttack);
+            _animator.SetTrigger(GlobalAnimationData.SimpleAttack);
         }
 
         #region Animation Events
