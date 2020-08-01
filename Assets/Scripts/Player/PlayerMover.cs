@@ -21,7 +21,6 @@ namespace Player
         private float _currSpeed;
         
         private Vector3 _smoothDashDirection;
-        private Vector3 _smoothDashDirectionFinal;
         private float _smoothDashPower;
 
         public float MagnitudeNorm => transform.InverseTransformDirection(_movement).z / maxMoveSpeed;
@@ -37,7 +36,7 @@ namespace Player
             _acceleration = maxMoveSpeed / timeZeroToMax;
             _deceleration = - maxMoveSpeed / timeMaxToZero;
             
-            _smoothDashDirectionFinal = Vector3.zero;
+            _smoothDashDirection = Vector3.zero;
         }
 
         private void Update()
@@ -85,13 +84,9 @@ namespace Player
 
         private void SmoothDash()
         {
-            _smoothDashDirectionFinal = _playerController.InputVector == Vector3.zero ? 
-                (_playerController.LastUpVector + _smoothDashDirection).normalized : 
-                (_playerController.InputVector + _smoothDashDirection).normalized;
-            
             _currSpeed += _deceleration * Time.deltaTime;
             _currSpeed = Mathf.Max(_currSpeed, 0f);
-            _movement = _smoothDashDirectionFinal * _currSpeed;
+            _movement = _smoothDashDirection * _currSpeed;
         }
 
         private void UpdateRotation()

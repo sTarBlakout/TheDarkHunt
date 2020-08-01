@@ -36,6 +36,11 @@ namespace Player
         {
             GrabJoystickInput();
             UpdateStates();
+            
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                SimpleAttackBehavior();
+            }
         }
 
         private void UpdateStates()

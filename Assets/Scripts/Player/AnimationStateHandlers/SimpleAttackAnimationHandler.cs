@@ -1,6 +1,5 @@
 ﻿using Global;
 using UnityEngine;
-using Player.DataTypes;
 
 namespace Player.AnimationStateHandlers
 {
@@ -15,6 +14,5 @@ namespace Player.AnimationStateHandlers
         {
             animator.SetBool(GlobalAnimationData.IsAttacking, false);
         }
-        
     }
 }
