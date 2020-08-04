@@ -11,6 +11,8 @@ namespace Player
         [SerializeField] private float timeMaxToZero = 1f;
         [SerializeField] private float rotateSpeed = 1f;
 
+        private const float SmoothDashLerpCoef = 0.01f;
+
         private CharacterController _characterController;
         private PlayerController _playerController;
 
@@ -44,7 +46,7 @@ namespace Player
             UpdateMovement();
             UpdateRotation();
         }
-        
+
         private void UpdateMovement()
         {
             switch (_playerController.MovingState)
@@ -87,6 +89,8 @@ namespace Player
             _currSpeed += _deceleration * Time.deltaTime;
             _currSpeed = Mathf.Max(_currSpeed, 0f);
             _movement = _smoothDashDirection * _currSpeed;
+            _smoothDashDirection 
+                = Vector3.LerpUnclamped(_smoothDashDirection, _playerController.InputVector, SmoothDashLerpCoef);
         }
 
         private void UpdateRotation()
