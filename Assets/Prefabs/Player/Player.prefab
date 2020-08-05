@@ -26604,6 +26604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15382ede3cc609143b723b6fd55128e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialController: {fileID: 22100000, guid: d9a4d653b512e104ab1b1afb59cb5358, type: 2}
 --- !u!114 &593151098560395709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26631,7 +26632,9 @@ MonoBehaviour:
   maxMoveSpeed: 8
   timeZeroToMax: 1
   timeMaxToZero: 1
-  rotateSpeed: 500
+  moveSpeedCoef: 4
+  rotateSpeedCoef: 500
+  smoothDashCoef: 8
 --- !u!114 &790697613576516900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26657,7 +26660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightHandTransform: {fileID: 4899146012329297786}
-  equippedWeapon: {fileID: 0}
+  equippedWeapon: {fileID: 11400000, guid: 0dd353ba6d34c8949aa017618265ebff, type: 2}
 --- !u!1 &4897061445919683342
 GameObject:
   m_ObjectHideFlags: 0

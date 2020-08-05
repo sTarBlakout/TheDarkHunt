@@ -83,7 +83,7 @@ namespace Player
                 _currSpeed = Mathf.Min(_currSpeed, maxMoveSpeed);
                 _targetMovement = _playerController.InputVector * _currSpeed;
             }
-            _currMovement = Vector3.LerpUnclamped(_currMovement, _targetMovement, moveSpeedCoef);
+            _currMovement = Vector3.LerpUnclamped(_currMovement, _targetMovement, moveSpeedCoef * Time.deltaTime);
         }
 
         private void SmoothDash()
@@ -91,7 +91,7 @@ namespace Player
             _currSpeed += _deceleration * Time.deltaTime;
             _currSpeed = Mathf.Max(_currSpeed, 0f);
             _targetMovement = _smoothDashDirection * _currSpeed;
-            _currMovement = Vector3.LerpUnclamped(_currMovement, _targetMovement, smoothDashCoef);
+            _currMovement = Vector3.LerpUnclamped(_currMovement, _targetMovement, smoothDashCoef * Time.deltaTime);
         }
 
         private void UpdateRotation()
