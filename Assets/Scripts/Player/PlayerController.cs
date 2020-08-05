@@ -65,9 +65,9 @@ namespace Player
             var meleeWeapon = currWeapon as MeleeWeapon;
             if (meleeWeapon != null) 
             {
+                _playerAnimator.ProcessSimpleAttack(1);
                 _playerFighter.Attack();
                 _playerMover.SmoothDash(transform.forward, meleeWeapon.DashPower);
-                _playerAnimator.ProcessSimpleAttack();
             }
         }
     }

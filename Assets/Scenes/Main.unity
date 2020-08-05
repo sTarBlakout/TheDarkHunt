@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4351,17 +4351,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 593151098560395710, guid: 785e7011ffc45594f9834d30a073e96d,
-        type: 3}
-      propertyPath: smoothDashDecCoef
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4647027347699113854, guid: 785e7011ffc45594f9834d30a073e96d,
-        type: 3}
-      propertyPath: initialController
-      value: 
-      objectReference: {fileID: 22100000, guid: d9a4d653b512e104ab1b1afb59cb5358,
-        type: 2}
     - target: {fileID: 4897059820324465552, guid: 785e7011ffc45594f9834d30a073e96d,
         type: 3}
       propertyPath: m_Name
@@ -4422,11 +4411,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7081120200930933040, guid: 785e7011ffc45594f9834d30a073e96d,
-        type: 3}
-      propertyPath: equippedWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 0dd353ba6d34c8949aa017618265ebff,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 785e7011ffc45594f9834d30a073e96d, type: 3}

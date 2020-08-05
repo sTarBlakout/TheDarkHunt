@@ -32,8 +32,9 @@ namespace Player
             _animator.runtimeAnimatorController = animations;
         }
 
-        public void ProcessSimpleAttack()
+        public void ProcessSimpleAttack(int id)
         {
+            _animator.SetInteger(GlobalAnimationData.SimpleAttackId, id);
             _animator.SetTrigger(GlobalAnimationData.SimpleAttack);
         }
 
