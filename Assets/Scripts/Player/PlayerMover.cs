@@ -106,7 +106,7 @@ namespace Player
 
         public void SmoothDash(Vector3 direction, float power)
         {
-            _currSpeed += power;
+            _currSpeed = power;
             _smoothDashDirection = direction;
         }
     }
