@@ -4,7 +4,7 @@ namespace Weapons
 {
     public class WeaponBase : ScriptableObject
     {
-        [Header("Main")] 
+        [Header("Main")]
         [SerializeField] private string weaponName;
         [SerializeField] private GameObject weaponPrefab;
         [SerializeField] private AnimatorOverrideController animations;

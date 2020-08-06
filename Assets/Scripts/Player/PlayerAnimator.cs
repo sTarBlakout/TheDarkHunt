@@ -26,10 +26,10 @@ namespace Player
             _animator.SetFloat(GlobalAnimationData.MoveSpeed, _playerMover.MagnitudeNorm);
         }
 
-        public void SetNewAnimations(AnimatorOverrideController animations)
+        public void ChangeAnimations(AnimatorOverrideController animations)
         {
-            if (animations == null) return;
-            _animator.runtimeAnimatorController = animations;
+            if (animations != null)
+                _animator.runtimeAnimatorController = animations;
         }
 
         public void ProcessSimpleAttack(int id)

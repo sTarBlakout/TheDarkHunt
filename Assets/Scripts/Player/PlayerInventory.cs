@@ -14,12 +14,14 @@ namespace Player
         private GameObject _equippedWeaponObject;
 
         private PlayerAnimator _playerAnimator;
-        
+        private PlayerFighter _playerFighter;
+
         public WeaponBase EquippedWeapon => equippedWeapon;
 
         private void Awake()
         {
             _playerAnimator = GetComponent<PlayerAnimator>();
+            _playerFighter = GetComponent<PlayerFighter>();
         }
 
         private void Start()
@@ -31,7 +33,12 @@ namespace Player
         {
             if (equippedWeapon == null) return null;
 
-            _playerAnimator.SetNewAnimations(equippedWeapon.Animations);
+            var meleeWeapon = equippedWeapon as MeleeWeapon;
+            if (meleeWeapon != null)
+            {
+                _playerAnimator.ChangeAnimations(meleeWeapon.Animations);
+                _playerFighter.SimpleAtkMoveSets = meleeWeapon.GetMoveSets();
+            }
             
             var weaponPrefab = equippedWeapon.WeaponPrefab;
             return weaponPrefab == null ? null : Instantiate(weaponPrefab, rightHandTransform);
