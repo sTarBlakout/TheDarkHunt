@@ -11,6 +11,8 @@ namespace Player
         [Header("Equipment")] 
         [SerializeField] private WeaponBase equippedWeapon;
 
+        private const float AddTimeForAtkSet = 0.2f;
+
         private GameObject _equippedWeaponObject;
 
         private PlayerAnimator _playerAnimator;
@@ -38,6 +40,7 @@ namespace Player
             {
                 _playerAnimator.ChangeAnimations(meleeWeapon.Animations);
                 _playerFighter.SimpleAtkMoveSets = meleeWeapon.GetMoveSets();
+                _playerFighter.TimeBetwAtksToKeepSet = meleeWeapon.AttackSpeed + AddTimeForAtkSet;
             }
             
             var weaponPrefab = equippedWeapon.WeaponPrefab;
