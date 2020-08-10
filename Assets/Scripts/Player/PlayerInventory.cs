@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Global;
+using UnityEngine;
 using Weapons;
 
 namespace Player
@@ -10,8 +11,6 @@ namespace Player
 
         [Header("Equipment")] 
         [SerializeField] private WeaponBase equippedWeapon;
-
-        private const float AddTimeForAtkSet = 0.2f;
 
         private GameObject _equippedWeaponObject;
 
@@ -39,8 +38,8 @@ namespace Player
             if (meleeWeapon != null)
             {
                 _playerAnimator.ChangeAnimations(meleeWeapon.Animations);
+                _playerAnimator.SetAnimationSpeed(GlobalAnimationData.AttackSpeedMultiplier, meleeWeapon.AttackSpeed);
                 _playerFighter.SimpleAtkMoveSets = meleeWeapon.GetMoveSets();
-                _playerFighter.TimeBetwAtksToKeepSet = meleeWeapon.AttackSpeed + AddTimeForAtkSet;
             }
             
             var weaponPrefab = equippedWeapon.WeaponPrefab;

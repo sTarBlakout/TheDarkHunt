@@ -1,23 +1,32 @@
 ﻿using System.Collections.Generic;
+using Global;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerFighter : MonoBehaviour
     {
+        private const float TimeForKeepCurrAtkSet = 0.2f;
+        
         private float _timeBetwAtksToKeepSet;
         private float _timeLastAttack;
         private int _currMoveSetId;
         private int _currAtkId;
 
+        private Animator _animator;
+
         private List<List<int>> _simpleAtkMoveSets;
 
         public List<List<int>> SimpleAtkMoveSets { set => _simpleAtkMoveSets = value; }
-        
-        public float TimeBetwAtksToKeepSet
+
+        private void Awake()
         {
-            get => _timeBetwAtksToKeepSet;
-            set => _timeBetwAtksToKeepSet = value;
+            _animator = GetComponent<Animator>();
+        }
+
+        private void Update()
+        {
+            _timeBetwAtksToKeepSet = _animator.GetFloat(GlobalAnimationData.SimpleAttackTime) + TimeForKeepCurrAtkSet;
         }
 
         public int SimpleAttack()

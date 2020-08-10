@@ -32,6 +32,11 @@ namespace Player
                 _animator.runtimeAnimatorController = animations;
         }
 
+        public void SetAnimationSpeed(int animationId, float speed)
+        {
+            _animator.SetFloat(animationId, speed);    
+        }
+
         public void ProcessSimpleAttack(int id)
         {
             _animator.SetInteger(GlobalAnimationData.SimpleAttackId, id);

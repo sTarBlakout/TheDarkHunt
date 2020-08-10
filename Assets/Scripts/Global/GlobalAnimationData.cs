@@ -11,8 +11,10 @@ namespace Global
         public static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         public static readonly int SimpleAttack = Animator.StringToHash("SimpleAttack");
         public static readonly int SimpleAttackId = Animator.StringToHash("SimpleAttackID");
+        public static readonly int AttackSpeedMultiplier = Animator.StringToHash("AttackSpeedMultiplier");
         
         public static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+        public static readonly int SimpleAttackTime = Animator.StringToHash("simpleAttackTime");
 
         #endregion
 
